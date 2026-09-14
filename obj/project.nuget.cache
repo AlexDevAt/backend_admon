@@ -1,0 +1,74 @@
+{
+  "version": 2,
+  "dgSpecHash": "WdWsoHuANdc=",
+  "success": true,
+  "projectFilePath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+  "expectedPackageFiles": [
+    "/Users/axion/.nuget/packages/bcrypt.net-next/4.2.0/bcrypt.net-next.4.2.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/dapper/2.1.86/dapper.2.1.86.nupkg.sha512",
+    "/Users/axion/.nuget/packages/mediatr/14.2.0/mediatr.14.2.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.aspnetcore.openapi/10.0.3/microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.entityframeworkcore/10.0.0-rc.2.25502.107/microsoft.entityframeworkcore.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.0-rc.2.25502.107/microsoft.entityframeworkcore.abstractions.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.0-rc.2.25502.107/microsoft.entityframeworkcore.analyzers.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.0-preview.7.25380.108/microsoft.entityframeworkcore.relational.10.0.0-preview.7.25380.108.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512",
+    "/Users/axion/.nuget/packages/npgsql/10.0.3/npgsql.10.0.3.nupkg.sha512",
+    "/Users/axion/.nuget/packages/npgsql.entityframeworkcore.postgresql/10.0.0-preview.7/npgsql.entityframeworkcore.postgresql.10.0.0-preview.7.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "message": "backend_admon depends on Microsoft.EntityFrameworkCore (>= 10.0.0-rc.1.26425.128) but Microsoft.EntityFrameworkCore 10.0.0-rc.1.26425.128 was not found. Microsoft.EntityFrameworkCore 10.0.0-rc.2.25502.107 was resolved instead.",
+      "projectPath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "warningLevel": 1,
+      "filePath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "message": "backend_admon depends on Npgsql.EntityFrameworkCore.PostgreSQL (>= 10.0.0-preview.6) but Npgsql.EntityFrameworkCore.PostgreSQL 10.0.0-preview.6 was not found. Npgsql.EntityFrameworkCore.PostgreSQL 10.0.0-preview.7 was resolved instead.",
+      "projectPath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "warningLevel": 1,
+      "filePath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "libraryId": "Npgsql.EntityFrameworkCore.PostgreSQL",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "message": "Detected package version outside of dependency constraint: Npgsql.EntityFrameworkCore.PostgreSQL 10.0.0-preview.7 requires Microsoft.EntityFrameworkCore (= 10.0.0-preview.7.25380.108) but version Microsoft.EntityFrameworkCore 10.0.0-rc.2.25502.107 was resolved.",
+      "projectPath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "warningLevel": 1,
+      "filePath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "libraryId": "Microsoft.EntityFrameworkCore",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    },
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "warningLevel": 1,
+      "filePath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
