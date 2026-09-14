@@ -44,3 +44,4 @@
 /Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/obj/Debug/net10.0/backend_admon.genruntimeconfig.cache
 /Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/obj/Debug/net10.0/ref/backend_admon.dll
 /Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/bin/Debug/net10.0/BCrypt-Net-Next.dll
+/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/obj/Debug/net10.0/backend_admon.sourcelink.json

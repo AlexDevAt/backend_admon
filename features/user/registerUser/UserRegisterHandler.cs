@@ -31,32 +31,35 @@ namespace backend_admon.features.user.registerUser
                 return Result<UserRegisterResponse>.Failure("El usuario ya existe",409,false);
             }
             sql = @"INSERT INTO Usuarios (nombres,apellido_paterno,apellido_materno,nombre_usuario,email,password_hash) 
-            Values (@Nombres,@ApellidoPaterno,@ApellidoMaterno,@NombreUsuario,@Email,@PasswordHash) RETURNING public_id";
+            Values (@Nombres,@ApellidoPaterno,@ApellidoMaterno,@NombreUsuario,@Email,@PasswordHash) RETURNING public_id,CREATE_AT";
 
             try
             {
-                var nuevoUsuarioIdPublic = await _db.ExecuteScalarAsync(sql, 
+                var resDb = await _db.QueryAsync<UserRegistroFromDB>(sql, 
                 new {Nombres = request.Name,
                 ApellidoPaterno = request.ApellidoPaterno,
                 ApellidoMaterno = request.ApellidoMaterno,
                 NombreUsuario=request.NombreUsuario,
                 Email = request.Email,
-                PasswordHash=new HashBCrypt().Hashear(request.password)});
-                 return Result<UserRegisterResponse>
-                .Success(new UserRegisterResponse(
-                Guid.Parse(nuevoUsuarioIdPublic.ToString()),request.Name,request.Email),200);
+                PasswordHash =new HashBCrypt().Hashear(request.password)});
+                var nuevoUsuario = resDb.FirstOrDefault();
+                var userResponseDto = new UserRegisterDto(nuevoUsuario.public_id,request.NombreUsuario,request.Email,nuevoUsuario.create_at,true);
+                return Result<UserRegisterResponse>.Success(new UserRegisterResponse(userResponseDto.Id_public,userResponseDto.Nombre_usuario,userResponseDto.Email,userResponseDto.CreateAt),200);
             }
             catch (PostgresException ex) when (ex.SqlState== "23505")
             {
                 return Result<UserRegisterResponse>.Failure("El nombre de usuario ya existe",409,false);
             }
-            catch (Exception ex)
+            catch(PostgresException ex)
             {
-                return Result<UserRegisterResponse>.Failure(ex.Data.ToString(),500,false);
+                return Result<UserRegisterResponse>.Failure(ex.MessageText,409,false);
+            }
+            catch(Exception ex)
+            {
+                return Result<UserRegisterResponse>.Failure(ex.Message,409,false);
                 
             }
-
-
+         
         }
     }
 }
