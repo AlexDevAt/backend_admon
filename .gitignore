@@ -1,1 +1,26 @@
+# Configuración y secretos
 appsettings.json
+appsettings.*.json
+!appsettings.json.example
+
+# Compilación y binarios de .NET
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# macOS (archivos basura del sistema)
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Editores de código (VS Code / Neovim / JetBrains)
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
