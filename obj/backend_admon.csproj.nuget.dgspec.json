@@ -10,11 +10,11 @@
         "projectUniqueName": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
         "projectName": "backend_admon",
         "projectPath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/backend_admon.csproj",
-        "packagesPath": "/Users/axion/.nuget/packages/",
+        "packagesPath": "/Users/atlextqq/.nuget/packages/",
         "outputPath": "/Volumes/DiscoExt/proyectos/Backend_admon/backend_admon/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/axion/.nuget/NuGet/NuGet.Config"
+          "/Users/atlextqq/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -24,6 +24,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -38,10 +39,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "BCrypt.Net-Next": {
@@ -92,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

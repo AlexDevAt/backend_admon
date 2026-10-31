@@ -10,5 +10,5 @@ namespace backend_admon.features.user.registerUser
         string NombreUsuario,
         string Email,
         string password
-    ):IRequest<Result<UserRegisterResponse>>;
+    ) : IRequest<Result<UserRegisterResponse>>;
 }

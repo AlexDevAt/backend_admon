@@ -11,55 +11,80 @@ using Npgsql;
 
 namespace backend_admon.features.user.registerUser
 {
-    public class UserRegisterHandler : IRequestHandler<UserRegisterCommand,Result<UserRegisterResponse>>
+    public class UserRegisterHandler
+        : IRequestHandler<UserRegisterCommand, Result<UserRegisterResponse>>
     {
-
         private readonly IDbConnection _db;
+
         public UserRegisterHandler(IDbConnection db)
         {
             _db = db;
         }
 
-
-        async Task<Result<UserRegisterResponse>> IRequestHandler<UserRegisterCommand, Result<UserRegisterResponse>>.Handle(UserRegisterCommand request, CancellationToken cancellationToken)
+        async Task<Result<UserRegisterResponse>> IRequestHandler<
+            UserRegisterCommand,
+            Result<UserRegisterResponse>
+        >.Handle(UserRegisterCommand request, CancellationToken cancellationToken)
         {
             string sql = $"SELECT EXISTS (SELECT 1 FROM Usuarios WHERE email = @Email)";
 
-            bool res = await _db.ExecuteScalarAsync<bool>(sql, new {Email = request.Email});
-            if(res)
+            bool res = await _db.ExecuteScalarAsync<bool>(sql, new { Email = request.Email });
+            if (res)
             {
-                return Result<UserRegisterResponse>.Failure("El usuario ya existe",409,false);
+                return Result<UserRegisterResponse>.Failure("El usuario ya existe", 409, false);
             }
-            sql = @"INSERT INTO Usuarios (nombres,apellido_paterno,apellido_materno,nombre_usuario,email,password_hash) 
+            sql =
+                @"INSERT INTO Usuarios (nombres,apellido_paterno,apellido_materno,nombre_usuario,email,password_hash) 
             Values (@Nombres,@ApellidoPaterno,@ApellidoMaterno,@NombreUsuario,@Email,@PasswordHash) RETURNING public_id,CREATE_AT";
 
             try
             {
-                var resDb = await _db.QueryAsync<UserRegistroFromDB>(sql, 
-                new {Nombres = request.Name,
-                ApellidoPaterno = request.ApellidoPaterno,
-                ApellidoMaterno = request.ApellidoMaterno,
-                NombreUsuario=request.NombreUsuario,
-                Email = request.Email,
-                PasswordHash =new HashBCrypt().Hashear(request.password)});
+                var resDb = await _db.QueryAsync<UserRegistroFromDB>(
+                    sql,
+                    new
+                    {
+                        Nombres = request.Name,
+                        ApellidoPaterno = request.ApellidoPaterno,
+                        ApellidoMaterno = request.ApellidoMaterno,
+                        NombreUsuario = request.NombreUsuario,
+                        Email = request.Email,
+                        PasswordHash = new HashBCrypt().Hashear(request.password),
+                    }
+                );
                 var nuevoUsuario = resDb.FirstOrDefault();
-                var userResponseDto = new UserRegisterDto(nuevoUsuario.public_id,request.NombreUsuario,request.Email,nuevoUsuario.create_at,true);
-                return Result<UserRegisterResponse>.Success(new UserRegisterResponse(userResponseDto.Id_public,userResponseDto.Nombre_usuario,userResponseDto.Email,userResponseDto.CreateAt),200);
+                var userResponseDto = new UserRegisterDto(
+                    nuevoUsuario.public_id,
+                    request.NombreUsuario,
+                    request.Email,
+                    nuevoUsuario.create_at,
+                    true
+                );
+                return Result<UserRegisterResponse>.Success(
+                    new UserRegisterResponse(
+                        userResponseDto.Id_public,
+                        userResponseDto.Nombre_usuario,
+                        userResponseDto.Email,
+                        userResponseDto.CreateAt
+                    ),
+                    200
+                );
             }
-            catch (PostgresException ex) when (ex.SqlState== "23505")
+            catch (PostgresException ex) when (ex.SqlState == "23505")
             {
-                return Result<UserRegisterResponse>.Failure("El nombre de usuario ya existe",409,false);
+                return Result<UserRegisterResponse>.Failure(
+                    "El nombre de usuario ya existe",
+                    409,
+                    false
+                );
             }
-            catch(PostgresException ex)
+            catch (PostgresException ex)
             {
-                return Result<UserRegisterResponse>.Failure(ex.MessageText,409,false);
+                return Result<UserRegisterResponse>.Failure(ex.MessageText, 409, false);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return Result<UserRegisterResponse>.Failure(ex.Message,409,false);
-                
+                return Result<UserRegisterResponse>.Failure(ex.Message, 409, false);
             }
-         
         }
     }
 }

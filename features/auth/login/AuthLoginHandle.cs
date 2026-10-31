@@ -31,7 +31,7 @@ namespace backend_admon.features.auth.login
                 return Result<AuthLoginResponse>.Failure("",400,false);
             }
 
-            string sql = @"SELECT password_hash FROM Usuarios WHERE email = @email";
+            string sql = @"SELECT password_hash FROM Usuarios WHERE LOWER(email) = @email";
 
             string? passwordHasher = await _db.QueryFirstOrDefaultAsync<string>(sql, new
             {
